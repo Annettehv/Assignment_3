@@ -1,0 +1,11 @@
+.form {
+	background-color: aqua;
+	width: 50rem;
+	height: 5rem;
+	border-radius: 2rem;
+	padding-top: 2rem;
+}
+
+.rendered-table {
+	background-color: blue;
+}

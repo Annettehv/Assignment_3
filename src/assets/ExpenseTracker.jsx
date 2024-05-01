@@ -2,33 +2,56 @@ import React, { useState } from 'react';
 import styles from "./ExpenseTracker.module.css";
 
 function ExpenseTracker() {
+  
   const [expenses, setExpenses] = useState([]);
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState('');
   const [date, setDate] = useState('');
   const [category, setCategory] = useState('');
 
+  // Function to add new expenses
+
   const addExpense = () => {
+
+    // Form validation, check if all the fields except for category is filled out
     if (title.trim() === '' || amount.trim() === '' || date.trim() === '') {
       alert('All fields need to be filled out.');
       return;
     }
 
+    // Create a new expense (object)
+
     const newExpense = {
-      id: Date.now(),
+      id: Date.now(), // creating unique id
       title,
-      amount: parseFloat(amount),
-      date: new Date(date).toISOString(),
-      category: category || '-',
+      amount: parseFloat(amount), // covert amount to a float 
+      date: new Date(date).toISOString(), // convert the date to iso8601
+      category: category || '-', // default dash if not filled out
     };
 
+    //add the new expenses to the list
+
     setExpenses([...expenses, newExpense]);
+
+    // clear the form inputs after adding new expense
+
     setTitle('');
     setAmount('');
     setDate('');
     setCategory('');
   };
 
+    // function to delete
+
+   const deleteExpense = (id) => {
+    setExpenses(expenses.filter(expense => expense.id !== id)); // filter out expense with the given ID
+  };
+
+  // function to calculate the total
+
+  const getTotalExpenses = () => {
+    return expenses.reduce((total, expense) => total + expense.amount, 0).toFixed(2); // reduce method to sum up all 
+  }; 
 
 
   return (
