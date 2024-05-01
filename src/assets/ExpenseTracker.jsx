@@ -55,7 +55,7 @@ function ExpenseTracker() {
 
 
   return (
-    <div className="App">
+    <div className="form-container">
       <h1>Expense Tracker</h1>
       <div className={styles.form}>
         <input type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} />

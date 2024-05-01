@@ -1,11 +1,39 @@
+* {
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+	font-weight: 400;
+}
+
+body {
+	margin: 0;
+	display: flex;
+	place-items: center;
+	min-width: 320px;
+	min-height: 100vh;
+  }
+
+
 .form {
-	background-color: aqua;
 	width: 50rem;
 	height: 5rem;
 	border-radius: 2rem;
 	padding-top: 2rem;
+	background: rgb(131,58,180);
+	background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+
 }
 
-.rendered-table {
+/* .rendered-table {
 	background-color: blue;
+} */
+
+input {
+	margin: 0.5rem;
+	margin-right: 0.5rem;
 }
+
+button {
+	margin-left: 0.5rem;
+	
+}
+
