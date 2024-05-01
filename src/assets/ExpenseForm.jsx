@@ -2,42 +2,40 @@ import React, { useRef, useState } from "react";
 import styles from "./ExpenseForm.module.css";
 function ExpenseForm() {
   const [userData, setUserData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phoneNumber: "",
-    subject: "",
-    message: "",
+    expenseTitle: "",
+    expenseAmount: "",
+    expenseDate: "",
+    expenseCategory: "-",
+    
   });
   const [errors, setErrors] = useState({
-    firstNameError: "",
-    lastNameError: "",
-    emailError: "",
-    phoneNumberError: "",
-    subjectError: "",
-    messageError: "",
+    expenseTitleError: "",
+    expenseAmountError: "",
+    expenseDateError: "",
+    expenseCategoryError: "",
+    
   });
   const textAreaElement = useRef(null);
 
   const validateForm = () => {
     let isValid = true;
     const clonedErrorObj = { ...errors };
-    if (!userData.firstName.trim()) {
-      clonedErrorObj.firstNameError = "First name is required!";
+    if (!userData.expenseTitle.trim()) {
+      clonedErrorObj.expenseTitleError = "Expense title is required!";
       isValid = false;
-    } else if (userData.firstName.trim().length > 20) {
-      clonedErrorObj.firstNameError = "Maximum character limit exceeded";
-      isValid = false;
-    }
-    if (!userData.lastName.trim()) {
-      clonedErrorObj.lastNameError = "Last name is required!";
-      isValid = false;
-    } else if (userData.lastName.trim().length > 20) {
-      clonedErrorObj.lastNameError = "Maximum character limit exceeded";
+    } else if (userData.expenseTitle.trim().length > 20) {
+      clonedErrorObj.expenseTitleError = "Maximum character limit exceeded";
       isValid = false;
     }
-    if (!userData.email.trim()) {
-      clonedErrorObj.emailError = "Email is required!";
+    if (!userData.expenseAmount.trim()) {
+      clonedErrorObj.expenseAmountError = "Expense amount is required!";
+      isValid = false;
+    } else if (userData.expenseAmount.trim().length > 20) {
+      clonedErrorObj.expenseAmountError = "Maximum character limit exceeded";
+      isValid = false;
+    }
+    if (!userData.expenseDate.trim()) {
+      clonedErrorObj.expenseDateError = "Expense Date is required!";
       isValid = false;
     } else {
       const emailRegex = /^[a-zA-Z0–9._-]+@[a-zA-Z0–9.-]+\.[a-zA-Z]{2,4}$/;
@@ -46,13 +44,13 @@ function ExpenseForm() {
         isValid = false;
       }
     }
-    if (userData.phoneNumber.trim()) {
-      if (userData.phoneNumber.trim().length !== 8) {
-        clonedErrorObj.phoneNumberError = "Phone number must be 8 digits!";
+    if (userData.expenseCategory.trim()) {
+      if (userData.expenseCategory.trim().length !== 8) {
+        clonedErrorObj.expenseCategoryError = "Phone number must be 8 digits!";
         isValid = false;
       }
     }
-    if (!userData.subject.trim()) {
+    /* if (!userData.subject.trim()) {
       clonedErrorObj.subjectError = "Subject is required!";
       isValid = false;
     } else if (userData.subject.trim().length > 20) {
@@ -64,7 +62,7 @@ function ExpenseForm() {
       console.log(userData.message.trim());
       clonedErrorObj.messageError = "Message text is required!";
       isValid = false;
-    }
+    } */
 
     setErrors(clonedErrorObj);
     return isValid;
@@ -80,12 +78,12 @@ function ExpenseForm() {
       ...prev,
       [name]: value,
     }));
-    if (name === "message" && value.length >= 300) {
+    /* if (name === "message" && value.length >= 300) {
       setErrors((prevErrors) => ({
         ...prevErrors,
         messageError: "Maximum characters allowed is 300",
       }));
-    }
+    } */
   };
 
   const handleSubmit = (e) => {
@@ -102,7 +100,7 @@ function ExpenseForm() {
   return (
     <form className={styles.form_element} onSubmit={handleSubmit}>
       <fieldset className={styles.contact_form_container}>
-        <legend>Contact us</legend>
+        <h2>Expense Tracker</h2>
         <section className={styles.name_section}>
           <div className={styles.input_group}>
             <label htmlFor="expenseTitle">Expense Title</label>
