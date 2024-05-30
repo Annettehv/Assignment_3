@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import './App.css'
 
-import ExpenseTracker from './assets/ExpenseTracker'
+import ExpenseTracker from './components/ExpenseTracker'
 
 
 function App() {

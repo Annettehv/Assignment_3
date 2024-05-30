@@ -1,3 +1,7 @@
+// handle error messages with useRef and local storage, useEffect
+// divide into components, one for the form and maybe one for the button
+// add the component into a components folder instaed of the assets folder
+
 import React, { useState } from 'react';
 import styles from "./ExpenseTracker.module.css";
 
